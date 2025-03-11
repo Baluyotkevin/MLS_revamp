@@ -13,7 +13,8 @@ const Pricing = () => {
             description: 'Get started with LoveStory!',
             price: "10.00",
             items: ["3 Blog Posts", "3 Transcription"],
-            paymentLink: "",
+            paymentLink: "https://buy.stripe.com/test_9AQdTvgaya8y6lO3cc",
+            priceId: process.env.NODE_ENV === 'development' ? 'price_1Qz3CVJonCI5zLzg5ic2JZFv' : "",
         },
         {
             id: 'pro',
@@ -21,7 +22,8 @@ const Pricing = () => {
             description: 'All Blog Posts!',
             price: "19.99",
             items: ["Unlimited Blog Posts", "Unlimited Transcription"],
-            paymentLink: "",
+            paymentLink: "https://buy.stripe.com/test_14kg1D9Ma3KafWodQR",
+            priceId: process.env.NODE_ENV === 'development' ? 'price_1Qz3DpJonCI5zLzgtenF3ryH' : "",
         },
     ]
 
@@ -34,7 +36,7 @@ const Pricing = () => {
                 </h2>
             </div>
             <div className="relative flex justify-center flex-col lg:flex-row items-center lg:items-stretch gap-8">
-                {plansMap.map(({ id, name, price, description, items}, idx) => (
+                {plansMap.map(({ paymentLink, id, name, price, description, items}, idx) => (
                 <div className="relative w-full max-w-lg" key={idx}>
                     <div className={cn("relative flex flex-col h-full gap-4 lg:gap-8 z-10 p-8 rounded-box border-[1px] border-gray-500/20 rounded-2xl", id === 'pro' && "border-red-500 gap-05 border-2")}>
                         <div className="flex justify-between items-center gap-4">
@@ -71,8 +73,8 @@ const Pricing = () => {
 
                         <div className="space-y-2">
                             <Button variant={'link'} className={cn("border-2 rounded-full flex gap-2 bg-black text-gray-100", id === 'pro' && 'border-red-500 px-2')}>
-                                <Link href="/" className="flex gap-1 items-center">
-                                    Get LoveEasy
+                                <Link href={paymentLink} className="flex gap-1 items-center">
+                                    Get LoveStory
                                     <ArrowRight size={18} />
                                 </Link>
                             </Button>

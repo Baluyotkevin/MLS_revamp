@@ -14,7 +14,7 @@ const Banner = () => {
             className="mt-6 text-xl rounded-full px-12 py-8 lg:mt-20 bg-gradient-to-r from-red-600 to-pink-600 hover:from-pink-600 hover:to-red-600 text-white font-bold shadow-lg hover:no-underline"
         >
             <Link href="/#pricing" className="flex gap-2 items-center">
-                Get LoveEasy 
+                Get LoveStory
                 <ArrowRight className="animate-pulse" />
             </Link>
         </Button>

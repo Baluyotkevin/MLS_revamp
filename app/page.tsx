@@ -5,6 +5,7 @@ import Pricing from "@/components/Pricing";
 import { Dot } from "lucide-react";
 
 export default function Home() {
+  
   return (
     <main className="mx-auto w-full inset-0 h-full bg-[radial-gradient(circle,#e5e7eb_1px,transparent_1px)][background-size:16px_16px]">
 

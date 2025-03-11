@@ -19,12 +19,12 @@ const Header = () => {
           <span className="flex items-center gap-2 shrink-0">
               <Image 
                 src="/favicon.ico"
-                alt="LoveEasy logo"
+                alt="LoveStory logo"
                 width={32}
                 height={32}
                 className="hover:rotate-12 transform transition duration-200 ease-in-out"
               />
-              <span className="font-extrabold text-lg">LoveEasy</span>
+              <span className="font-extrabold text-lg">LoveStory</span>
           </span>
         </NavLink>
       </div>
