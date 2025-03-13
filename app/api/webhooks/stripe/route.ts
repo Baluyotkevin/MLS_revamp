@@ -1,4 +1,4 @@
-import { handleCheckoutSessionCompleted } from "@/lib/actions/payment-help";
+import { handleCheckoutSessionCompleted, handleSubscriptionDeleted } from "@/lib/actions/payment-help";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
@@ -36,13 +36,14 @@ export async function POST(req: NextRequest) {
                     }
                 );
 
-                  await handleCheckoutSessionCompleted({ session, stripe })
-                
+                await handleCheckoutSessionCompleted({ session, stripe })
                 break;
             }
             case "customer.subscription.deleted":
+            
                 const subscriptionId = event.data.object.id
-                const subscription = await stripe.subscriptions.retrieve(subscriptionId)
+
+                await handleSubscriptionDeleted({subscriptionId, stripe});
                 break;
             default:
                 console.log(`Unhandled event type ${event.type}`);

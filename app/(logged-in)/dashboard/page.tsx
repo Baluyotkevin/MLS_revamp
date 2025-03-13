@@ -1,15 +1,31 @@
-"use client";
-import { connectToDatabase } from '@/lib/cockroachdb'
+import { plansMap } from '@/lib/constants';
+import { connectToDB } from '@/lib/database';
+import { currentUser } from '@clerk/nextjs/server';
 import React from 'react'
 
-type Props = {}
+const Dashboard = async () => {
 
-const Dashboard = async (props: Props) => {
-    // const allUsers = await getUsers()
-    // console.log(await allUsers)
-    // const response = await db
+  const clerkUser = await currentUser();
+
+  const email = clerkUser?.emailAddresses[0].emailAddress ?? ""
+  const sql = await connectToDB();
+
+  let userId = null;
+  let planType = null;
+
+  const user = await sql`SELECT * FROM users WHERE email = ${email}`;
+  if (user && user.length > 0) {
+      userId = clerkUser?.id;
+      await sql`UPDATE users SET user_id = ${userId} WHERE email = ${email}`;
+      const priceId = user[0].price_id;
+      const checkPlanType = plansMap.filter(plan => plan.priceId === priceId)
+      planType = checkPlanType?.[0].id || null
+    };
+  const isBasicPlan = planType === 'basic'
+  const isProPlan = planType === 'pro'
+
   return (
-    <div>Dashboard</div>
+    <div>{isBasicPlan ? "yers" : isProPlan}</div>
   )
 }
 
