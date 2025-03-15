@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Header from "@/components/Header";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "sonner";
 
 const inter = FontSans({ subsets: ["latin"], weight: ['300', '400', '500', '600'], variable: "--font-sans" });
 
@@ -27,6 +28,7 @@ export default function RootLayout({
           <main>  
             {children}
           </main>
+          <Toaster richColors />
         </body>
       </html>
     </ClerkProvider>

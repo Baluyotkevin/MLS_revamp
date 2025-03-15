@@ -17,4 +17,4 @@ export const plansMap = [
             paymentLink: "https://buy.stripe.com/test_14kg1D9Ma3KafWodQR",
             priceId: process.env.NODE_ENV === 'development' ? 'price_1Qz3DpJonCI5zLzgtenF3ryH' : "",
         },
-]
+];
