@@ -1,4 +1,5 @@
 
+import ContentEditor from "@/components/content";
 import { connectToDB } from "@/lib/database";
 import { currentUser } from "@clerk/nextjs/server"
 import { redirect } from "next/navigation";
@@ -14,7 +15,7 @@ export default async function PostsPage({ params : { id } } : { params : { id : 
 
     return (
         <div className="">
-
+            <ContentEditor posts={posts} />
         </div>
     )
 }
